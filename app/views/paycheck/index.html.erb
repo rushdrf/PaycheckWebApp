@@ -1,0 +1,20 @@
+<h1>Generate Paycheck</h1>
+
+<%= form_tag('/paycheck/generate_paycheck', method: 'get') do %>
+  <%= label_tag('employee_name', 'Employee Name:') %>
+  <%= text_field_tag('employee_name') %>
+
+  <%= label_tag('annual_salary', 'Annual Salary:') %>
+  <%= text_field_tag('annual_salary') %>
+
+  <%= submit_tag('generate_paycheck') %>
+<% end %>
+
+<% if @paycheck %>
+  <hr>
+  <h2>Paycheck Generated!</h2>
+  <p>Employee Name: <%= @paycheck["employee_name"] %></p>
+  <p>Gross Montly Income: <%= @paycheck["gross_monthly_income"] %></p>
+  <p>Montly Income Tax: <%= @paycheck["monthly_income_tax"] %></p>
+  <p>Net Monthly Income: <%= @paycheck["net_monthly_income"] %></p>
+<% end %>
